@@ -1,0 +1,70 @@
+{
+  "name": "wedding-platform-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Wedding Services Platform",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "db:setup": "psql -U postgres -d postgres -f src/config/schema.sql",
+    "db:reset": "psql -U postgres -d postgres -c 'DROP DATABASE IF EXISTS wedding_platform; CREATE DATABASE wedding_platform;' && npm run db:setup"
+  },
+  "keywords": [
+    "wedding",
+    "services",
+    "platform",
+    "api",
+    "nodejs",
+    "express"
+  ],
+  "author": "Wedding Platform Team",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "expo": "^53.0.20",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.1",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.1",
+    "multer": "^2.0.2",
+    "pg": "^8.16.3",
+    "redis": "^5.8.2",
+    "stripe": "^18.4.0",
+    "react-dom": "19.0.0",
+    "react-native-web": "^0.20.0",
+    "@expo/metro-runtime": "~5.0.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.0.5",
+    "nodemon": "^3.1.10",
+    "supertest": "^7.1.4"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/server.js",
+      "!src/config/**"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ]
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
